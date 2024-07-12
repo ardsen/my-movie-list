@@ -1,0 +1,333 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --bg-blue: rgba(9, 9, 121, 1);
+  --bg-blue-light: rgb(18, 18, 233);
+  --bg-dark: rgba(2, 0, 36, 1);
+  --yellow: rgb(224, 224, 89);
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, var(--bg-blue) 0%, var(--bg-dark) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 60%;
+  height: 80%;
+  position: relative;
+}
+.header {
+  height: 9%;
+  width: 100%;
+  /* background-color: aliceblue; */
+  background-color: rgba(2, 0, 36, 0.798);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-container {
+  height: 100%;
+  width: 15%;
+}
+.logo-container img {
+  height: 100%;
+}
+.header div {
+  text-align: center;
+}
+.card-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  overflow-y: scroll;
+  padding: 2rem 0.2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.card-inner {
+  height: 320px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+  /* overflow: hidden; */
+}
+.card-inner:hover {
+  z-index: 2;
+  transform: scale(1.15);
+  transition: all 0.4s;
+  cursor: pointer;
+  position: relative;
+}
+.card {
+  height: 90%;
+  width: 100%;
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+}
+.title {
+  text-align: center;
+  background-color: rgb(220, 220, 2220);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0 0 10px 10px;
+  color: var(--bg-dark);
+}
+.title h3 {
+  font-size: 15px;
+}
+.title p {
+  font-size: 14px;
+  margin-top: 4px;
+}
+.overlay {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.5);
+  animation-name: overlayanimation;
+  animation-duration: 0.3s;
+}
+@keyframes overlayanimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+header input,
+.header-button {
+  font-size: 15px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  border: none;
+}
+header form {
+  position: relative;
+}
+.header-button {
+  margin-left: 3px;
+  background-color: rgb(224, 224, 89);
+  cursor: pointer;
+}
+.header-button:hover {
+  background-color: rgb(165, 165, 53);
+}
+.details h2 {
+  text-shadow: 1px 1px 6px #fff;
+}
+.error {
+  position: absolute;
+  width: 17rem;
+  text-align: center;
+  height: 1.3rem;
+  background-color: rgb(87, 3, 3);
+  bottom: -1.4rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  color: aliceblue;
+}
+.timer-container {
+  width: 100%;
+  height: 3px;
+  position: relative;
+  background-color: rgb(224, 224, 89);
+  animation: timer 3s linear forwards;
+}
+@keyframes timer {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.spinner-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.606);
+  position: absolute;
+  top: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 15px dashed var(--yellow);
+  animation: spinneranimation 4s linear infinite;
+}
+@keyframes spinneranimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.details {
+  position: fixed;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(
+    circle,
+    rgba(9, 9, 121, 1) 0%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  z-index: 5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 4rem;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #fff;
+  letter-spacing: 1.1px;
+  line-height: 1.3;
+}
+.details-bottom {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  gap: 3rem;
+}
+.details-bottom p {
+  text-align: center;
+}
+.details-bottom p:nth-child(1) {
+  font-style: italic;
+  text-align: end;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.details-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.close {
+  background-color: var(--bg-dark);
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.details-right span {
+  color: var(--yellow);
+}
+.add-button {
+  background-color: var(--bg-dark);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border: 1px solid var(--yellow);
+}
+.add-button:hover {
+  background-color: var(--bg-blue-light);
+}
+.add-button:active {
+  transform: scale(0.98);
+}
+.watched-movie-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  overflow-y: scroll;
+  padding: 3rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-content: start;
+  justify-content: center;
+}
+.watched-movie-card {
+  height: 5rem;
+  width: 45%;
+  display: flex;
+  gap: 0.6rem;
+  color: #fff;
+  background-color: #7f7f7f6d;
+  border-radius: 10px;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+.watched-movie-card img {
+  height: 100%;
+}
+.watched-movie-card:hover {
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+
+.dynamic-search-container {
+  position: absolute;
+  width: 100% !important;
+  /* height: 20rem; */
+  background-color: #fff;
+  /* top: 0; */
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px var(--yellow) solid;
+  border-top: none;
+}
+.dynamic-card {
+  width: 100%;
+  height: 3.5rem;
+  display: flex;
+  gap: 10px;
+  background-color: var(--bg-dark);
+  color: #fff;
+  align-items: center;
+  padding: 0.2rem;
+  border-bottom: 1px solid var(--yellow);
+  cursor: pointer;
+}
+.dynamic-card:hover {
+  background-color: var(--bg-blue);
+}
+.dynamic-image {
+  height: 100%;
+}
+.dynamic-image img {
+  height: 100%;
+}
+.dynamic-info {
+  width: 100%;
+  text-align: start !important;
+}
+.dynamic-search-button {
+  background-color: black;
+  border: 1px var(--yellow) solid;
+  border-top: none;
+  border-radius: 0 0 400px 400px;
+  cursor: pointer;
+}
+.dynamic-search-button:hover {
+  background-color: var(--bg-blue);
+}
