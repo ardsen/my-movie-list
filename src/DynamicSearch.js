@@ -11,7 +11,7 @@ function DynamicSearch({ query, setId }) {
       try {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=b4a85ef9&s=${query}`
+          `https://www.omdbapi.com/?apikey=b4a85ef9&s=${query}`
         );
         if (!res.ok) throw new Error("Something went wrong!");
         const data = await res.json();

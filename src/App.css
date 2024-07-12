@@ -287,7 +287,7 @@ header form {
 .dynamic-search-container {
   position: absolute;
   width: 100% !important;
-  /* height: 20rem; */
+  min-height: 10rem;
   background-color: #fff;
   /* top: 0; */
   border-radius: 0 0 20px 20px;

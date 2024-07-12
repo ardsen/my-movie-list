@@ -18,7 +18,7 @@ function Header({
       setIsLoading(true);
       if (query === "") return;
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=b4a85ef9&s=${query}`
+        `https://www.omdbapi.com/?apikey=b4a85ef9&s=${query}`
       );
       if (!res.ok) throw new Error("Something went wrong! Try again later...");
       const data = await res.json();

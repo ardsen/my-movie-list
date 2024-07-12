@@ -16,7 +16,7 @@ function Details({ id, setId, setWatchedList, watchedList }) {
       try {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=b4a85ef9&i=${id}`
+          `https://www.omdbapi.com/?apikey=b4a85ef9&i=${id}`
         );
         const data = await res.json();
         setFetchedMovie(data);
