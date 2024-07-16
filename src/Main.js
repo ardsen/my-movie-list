@@ -15,7 +15,6 @@ function Main() {
     const storedValue = localStorage.getItem("watched");
     return JSON.parse(storedValue);
   });
-  console.log(watchedList);
   return (
     <main>
       <div className="wrapper">
