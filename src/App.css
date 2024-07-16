@@ -81,6 +81,10 @@
   width: 100%;
 }
 .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 5rem;
   text-align: center;
   background-color: rgb(220, 220, 2220);
   padding: 0.2rem 0.4rem;
