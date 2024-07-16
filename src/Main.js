@@ -13,7 +13,7 @@ function Main() {
   const [isWatchedListOpen, setIsWatchedListOpen] = useState(false);
   const [watchedList, setWatchedList] = useState(function () {
     const storedValue = localStorage.getItem("watched");
-    return JSON.parse(storedValue);
+    return storedValue ? JSON.parse(storedValue) : [];
   });
   return (
     <main>
