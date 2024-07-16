@@ -41,6 +41,12 @@ function Details({ id, setId, setWatchedList, watchedList }) {
     if (watchedList.some((watched) => watched.id === newMovie.id)) return;
     setWatchedList((watched) => [...watched, newMovie]);
   };
+  useEffect(
+    function () {
+      localStorage.setItem("watched", JSON.stringify(watchedList));
+    },
+    [watchedList]
+  );
 
   return (
     <div className="details">

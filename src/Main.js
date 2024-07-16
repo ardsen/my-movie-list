@@ -11,7 +11,10 @@ function Main() {
   const [isLoading, setIsLoading] = useState(false);
   const [id, setId] = useState(null);
   const [isWatchedListOpen, setIsWatchedListOpen] = useState(false);
-  const [watchedList, setWatchedList] = useState([]);
+  const [watchedList, setWatchedList] = useState(function () {
+    const storedValue = localStorage.getItem("watched");
+    return JSON.parse(storedValue);
+  });
   console.log(watchedList);
   return (
     <main>

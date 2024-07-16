@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DynamicSearch from "./DynamicSearch";
 // b4a85ef9
 // http://www.omdbapi.com/?i=tt3896198&apikey=b4a85ef9
@@ -10,19 +10,32 @@ function Header({
 }) {
   const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
+  const inputEl = useRef(null);
+  useEffect(() => {
+    inputEl.current.focus();
+    function callback(e) {
+      if (document.activeElement === inputEl.current) return;
+      if (e.code === "Enter") {
+        inputEl.current.focus();
+        setQuery("");
+      }
+    }
+    document.addEventListener("keydown", callback);
+
+    return () => document.addEventListener("keydown", callback);
+  }, [setQuery]);
 
   const onSubmit = async function (e) {
     e.preventDefault();
     try {
+      if (query === "") return;
       setIsWatchedListOpen(false);
       setIsLoading(true);
-      if (query === "") return;
       const res = await fetch(
         `https://www.omdbapi.com/?apikey=b4a85ef9&s=${query}`
       );
       if (!res.ok) throw new Error("Something went wrong! Try again later...");
       const data = await res.json();
-      console.log(data);
       if (data.Response === "False") setError(true);
       setDataOnSubmit(data.Search);
       setIsLoading(false);
@@ -43,6 +56,8 @@ function Header({
       <form onSubmit={onSubmit}>
         <label htmlFor=""></label>
         <input
+          ref={inputEl}
+          className="search-input"
           type="text"
           placeholder="Search Movies..."
           value={query}
